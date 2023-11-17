@@ -102,8 +102,8 @@
 	    log('init', data);
 	    log(this.el.components);
 	    this.__cnv = document.createElement('canvas');
-	    this.__cnv.width = 2;
-	    this.__cnv.height = 2;
+	    this.__cnv.width = 757;
+	    this.__cnv.height = 2905;
 	    this.__ctx = this.__cnv.getContext('2d');
 	    this.__texture = new THREE.Texture(this.__cnv); //renders straight from a canvas
 	    this.__material = {};
@@ -113,6 +113,8 @@
 	    this.__addPublicFunctions();
 	    return this.material;
 	  },
+
+	  
 
 
 	  /**
@@ -282,6 +284,7 @@
 	    }
 	  },
 
+	  
 
 	  /**
 	   * Validate src is a valid image url
@@ -513,9 +516,20 @@
 	   * @private
 	   */
 	  __draw: function __draw() {
+
+		// Explicitly set canvas size
+		this.__cnv.width = this.__width;
+  		this.__cnv.height = this.__height;
+
+		  // Draw the frame onto the canvas
 	    this.__ctx.drawImage(this.__frames[this.__frameIdx], 0, 0, this.__width, this.__height);
 	    this.__texture.needsUpdate = true;
-	  },
+		
+
+
+
+},
+	
 
 
 	  /*============================
@@ -543,10 +557,10 @@
 	    this.__frames = frames;
 	    this.__frameCnt = times.length;
 	    this.__startTime = Date.now();
-	    this.__width = THREE.Math.floorPowerOfTwo(frames[0].width);
-	    this.__height = THREE.Math.floorPowerOfTwo(frames[0].height);
-	    this.__cnv.width = this.__width;
-	    this.__cnv.height = this.__height;
+	    this.__width = 716;
+	    this.__height = 2905;
+	    this.__cnv.width = 716;
+	    this.__cnv.height = 2905;
 	    this.__draw();
 	    if (this.__autoplay) {
 	      this.play();
