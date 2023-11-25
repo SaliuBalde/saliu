@@ -676,3 +676,15 @@
 
 /***/ }
 /******/ ]);
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('Scene loaded.');
+
+    document.querySelector('a-scene').addEventListener('mindar-image-found', function (event) {
+        console.log('MindAR Image Found:', event.detail.targetIndex);
+    });
+
+    document.querySelector('a-scene').addEventListener('mindar-image-lost', function (event) {
+        console.log('MindAR Image Lost:', event.detail.targetIndex);
+    });
+});
