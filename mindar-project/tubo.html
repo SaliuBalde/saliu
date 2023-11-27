@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+    <script src="shader.js"></script>
+</head>
+
+<body>
+    <a href="index.html"
+        style="position: fixed; top:20px;left:0; z-index: 9999999999; width: auto; background-color: white;color: black; cursor: pointer;">BACK</a>
+    <!-- <a href="colonna.html">colonna</a>
+    <a href="index.html">index</a> -->
+
+    <a-scene mindar-image="imageTargetSrc: ./targets1.mind;" vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <a-entity mindar-image-target="targetIndex: 0" position="0 2 -4" rotation="0 25 0"
+            geometry="primitive:plane; width: 0.7, height: 9" material="shader:gif;src:url(2.gif);opacity:1"></a-entity>
+    </a-scene>
+
+
+</body>
+
+</html>
