@@ -13,14 +13,23 @@
     <a href="index.html"
         style="position: fixed; top:20px;left:0; z-index: 9999999999; width: auto; background-color: white;color: black; cursor: pointer;">BACK</a>
 
-
-
     <a-scene mindar-image="imageTargetSrc: ./targets2.mind;" vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false">
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
+        <!-- Intro Image -->
+        <a-image id="introImage" src="intro.jpg" position="0 0 -5" scale="2 2 2"></a-image>
+
+        <!-- AR Content -->
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
         <a-entity mindar-image-target="targetIndex: 0" position="0 2 -4" rotation="0 25 0" geometry="primitive:plane;height: 3.85, width: 2" material="shader:gif;src:url(1.gif);opacity:1"></a-entity>
     </a-scene>
+
+    <script>
+        // Hide the intro image after 2 seconds
+        setTimeout(function () {
+            document.getElementById('introImage').setAttribute('visible', 'false');
+        }, 2000);
+    </script>
+
 </body>
-aa 
 </html>
