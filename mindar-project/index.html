@@ -42,7 +42,7 @@
             // Get the image element
             var introGif = document.getElementById("introGif");
 
-            // Set a timeout to gradually reduce the opacity over 2 seconds
+            // Set a timeout to gradually reduce the opacity over 3 seconds (1 second earlier)
             setTimeout(function () {
                 // Start fading out the GIF
                 introGif.style.opacity = 0;
@@ -54,7 +54,7 @@
 
                 // Change background color to green
                 document.body.style.backgroundColor = 'rgb(0, 255, 0)';
-            }, 2000);
+            }, 1000); // Adjust this timeout to start the transition 1 second earlier
         });
     </script>
 </head>
