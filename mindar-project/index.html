@@ -33,6 +33,17 @@
             text-decoration: none;
             margin: 10px; /* Adjust the margin as needed */
         }
+
+        /* Media query for mobile devices */
+        @media only screen and (max-width: 600px) {
+            body {
+                align-items: flex-start; /* Align items to the start on small screens */
+            }
+
+            #introVideo {
+                height: auto; /* Set height to auto for responsiveness */
+            }
+        }
     </style>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
