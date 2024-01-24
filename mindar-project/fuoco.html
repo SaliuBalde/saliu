@@ -35,14 +35,6 @@
             font-style: normal;
         }
 
-        @font-face {
-            font-family: 'ABCGintoNordWidthsVariable-Trial';
-            src: url('ABCGintoNordWidthsVariable-Trial.woff2') format('woff2'),
-                 url('ABCGintoNordWidthsVariable-Trial.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
         body {
             margin: 0;
             padding: 0;
@@ -84,8 +76,7 @@
         .colonna,
         .tubo,
         .fuoco,
-        .ascensore,
-        .quinto {
+        .ascensore {
             font-size: 50px; /* Set the desired font size */
             animation: colonnaAnimation 2s infinite alternate ease-in-out; /* Adjust the duration and timing function as needed */
         }
@@ -96,28 +87,20 @@
 
         .tubo,
         .fuoco,
-        .ascensore,
-        .quinto {
+        .ascensore {
             font-family: 'ABCArizonaPlusVariable-Trial', sans-serif;
-            animation: tuboFuocoAscensoreQuintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the second, third, fourth, and fifth buttons */
+            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the second, third, and fourth buttons */
         }
 
         .fuoco,
-        .ascensore,
-        .quinto {
+        .ascensore {
             font-family: 'ABCAsfaltVariableVF-Trial', sans-serif;
-            animation: tuboFuocoAscensoreQuintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the third, fourth, and fifth buttons */
+            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the third and fourth buttons */
         }
 
-        .ascensore,
-        .quinto {
+        .ascensore {
             font-family: 'ABCMaxiPlusVariable-Trial', sans-serif;
-            animation: tuboFuocoAscensoreQuintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the fourth and fifth buttons */
-        }
-
-        .quinto {
-            font-family: 'ABCGintoNordWidthsVariable-Trial', sans-serif;
-            animation: tuboFuocoAscensoreQuintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the fifth button */
+            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the fourth button */
         }
 
         a {
@@ -144,7 +127,7 @@
             }
         }
 
-        @keyframes tuboFuocoAscensoreQuintoAnimation {
+        @keyframes tuboFuocoAscensoreAnimation {
             0% {
                 font-variation-settings: 'wdth' 50, 'wght' 200, 'slnt' -14, 'SRFF' 0, 'MONO' 0;
             }
@@ -224,8 +207,6 @@
             <a href="fuoco.html" class="fuoco">[3] Fuoco</a>
             <hr>
             <a href="ascensore.html" class="ascensore">[4] Ascensore</a>
-            <hr>
-            <a href="quinto.html" class="quinto">[5] Quinto</a>
         </div>
     </div>
 </body>
