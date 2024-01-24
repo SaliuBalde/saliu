@@ -58,39 +58,60 @@
             z-index: 2; /* Set a higher z-index for the buttons */
         }
 
-        .Column, .Tube {
-            font-family: 'ABCGravityVariable-Trial', sans-serif;
-            text-decoration: none;
-            color: rgb(0, 0, 0);
-            margin: 1px; /* Adjust the margin as needed */
-            animation: fontAnimation 2s infinite alternate; /* Adjust the duration as needed */
-            display: none;
-            font-size: 50px;
+        .colonna,
+        .tubo {
+            font-size: 50px; /* Set the desired font size */
+            animation: colonnaAnimation 2s infinite alternate ease-in-out; /* Adjust the duration and timing function as needed */
         }
 
-        .Tube {
+        .colonna {
+            font-family: 'ABCGravityVariable-Trial', sans-serif;
+        }
+
+        .tubo {
             font-family: 'ABCArizonaFlareVariable-Trial', sans-serif;
-            font-weight: 700; /* Initial font weight */
+            animation: tuboAnimation 2s infinite alternate ease-in-out; /* Add animation to the second button */
         }
 
         a {
-            text-decoration: none;
             color: rgb(0, 0, 0);
+            text-decoration: none;
+            margin: 1px; /* Adjust the margin to make the buttons extremely close */
+            display: none; /* Initially hide the buttons */
+            cursor: pointer;
         }
 
-        @keyframes fontAnimation {
-            from {
+        hr {
+            width: 100%; /* Extend the line to the right border of the page */
+            border: 1px solid black;
+            margin: 1px 0; /* Adjust the margin as needed */
+            opacity: 0;
+            transition: opacity 1.5s ease-out;
+        }
+
+        @keyframes colonnaAnimation {
+            0% {
                 font-variation-settings: 'wdth' 50, 'wght' 100;
             }
-            to {
-                font-variation-settings: 'wdth' 150, 'wght' 900;
+            100% {
+                font-variation-settings: 'wdth' 150, 'wght' 100;
+            }
+        }
+
+        @keyframes tuboAnimation {
+            0% {
+                font-variation-settings: 'wdth' 50, 'wght' 200, 'slnt' -14;
+            }
+            100% {
+                font-variation-settings: 'wdth' 50, 'wght' 700, 'slnt' 0;
             }
         }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var introGif = document.getElementById("introGif");
-            var buttons = document.querySelectorAll('.Column, .Tube');
+            var buttons = document.querySelectorAll('.button-container a');
+            var line = document.querySelector('.button-container hr');
 
             // Set the current time to 0 to ensure the GIF starts from the beginning
             introGif.currentTime = 0;
@@ -101,10 +122,18 @@
                 setTimeout(function () {
                     introGif.src = "intro.gif";
 
-                    // Display both buttons
+                    // Display the buttons and line
                     buttons.forEach(function (button) {
                         button.style.display = 'block';
+                        // Add a click event listener to redirect to the specified URL
+                        button.addEventListener('click', function () {
+                            window.location.href = button.getAttribute('href');
+                        });
                     });
+
+                    // Fade in the line
+                    line.style.opacity = 1;
+
                 }, 1500);
 
                 document.body.style.backgroundColor = 'rgb(0, 255, 0)';
@@ -121,8 +150,9 @@
         <!-- Button container -->
         <div class="button-container">
             <!-- Buttons (hidden initially) -->
-            <a href="1.Column.html" class="Column">1. Column</a>
-            <a href="2.Tube.html" class="Tube">2. Tube</a>
+            <a href="colonna.html" class="colonna">1. Column</a>
+            <hr>
+            <a href="tubo.html" class="tubo">2. Tube</a>
         </div>
     </div>
 </body>
