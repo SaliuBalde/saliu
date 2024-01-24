@@ -16,27 +16,44 @@
             height: 100vh;
         }
 
+        .content-container {
+            position: relative;
+            z-index: 1;
+        }
+
         #introGif {
             width: 100%;
             height: 100%;
             object-fit: cover;
             opacity: 1;
             transition: opacity 1.5s ease-out;
-            position: relative;
-            z-index: 1;
+        }
+
+        .button-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2; /* Set a higher z-index for the buttons */
         }
 
         a {
-            position: absolute;
-            z-index: 0;
             color: white;
             text-decoration: none;
             margin: 10px;
+            display: none; /* Initially hide the buttons */
+            font-size: 60px; /* Set the desired larger font size */
         }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var introGif = document.getElementById("introGif");
+            var buttons = document.querySelectorAll('.button-container a');
 
             // Set the current time to 0 to ensure the GIF starts from the beginning
             introGif.currentTime = 0;
@@ -46,6 +63,12 @@
 
                 setTimeout(function () {
                     introGif.src = "intro.gif";
+
+                    // Display the buttons
+                    buttons.forEach(function (button) {
+                        button.style.display = 'block';
+                    });
+
                 }, 1500);
 
                 document.body.style.backgroundColor = 'rgb(0, 255, 0)';
@@ -55,12 +78,17 @@
 </head>
 
 <body>
-    <!-- Image element to display intro.gif -->
-    <img id="introGif" src="intro.gif" alt="Intro GIF">
+    <div class="content-container">
+        <!-- Image element to display intro.gif -->
+        <img id="introGif" src="intro.gif" alt="Intro GIF">
 
-    <!-- Buttons -->
-    <a href="colonna.html">colonna</a>
-    <a href="tubo.html">tubo</a>
+        <!-- Button container -->
+        <div class="button-container">
+            <!-- Buttons (hidden initially) -->
+            <a href="colonna.html">colonna</a>
+            <a href="tubo.html">tubo</a>
+        </div>
+    </div>
 </body>
 
 </html>
