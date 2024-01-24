@@ -4,6 +4,22 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
+        @font-face {
+            font-family: 'ABCGravityVariable-Trial';
+            src: url('ABCGravityVariable-Trial.woff2') format('woff2'),
+                 url('ABCGravityVariable-Trial.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'ABCArizonaFlareVariable-Trial';
+            src: url('ABCArizonaFlareVariable-Trial.woff2') format('woff2'),
+                 url('ABCArizonaFlareVariable-Trial.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -42,18 +58,39 @@
             z-index: 2; /* Set a higher z-index for the buttons */
         }
 
-        a {
-            color: rgb(0, 0, 0);
+        .Column, .Tube {
+            font-family: 'ABCGravityVariable-Trial', sans-serif;
             text-decoration: none;
-            margin: 10px;
-            display: none; /* Initially hide the buttons */
-            font-size: 50px; /* Set the desired larger font size */
+            color: rgb(0, 0, 0);
+            margin: 1px; /* Adjust the margin as needed */
+            animation: fontAnimation 2s infinite alternate; /* Adjust the duration as needed */
+            display: none;
+            font-size: 50px;
+        }
+
+        .Tube {
+            font-family: 'ABCArizonaFlareVariable-Trial', sans-serif;
+            font-weight: 700; /* Initial font weight */
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+        }
+
+        @keyframes fontAnimation {
+            from {
+                font-variation-settings: 'wdth' 50, 'wght' 100;
+            }
+            to {
+                font-variation-settings: 'wdth' 150, 'wght' 900;
+            }
         }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var introGif = document.getElementById("introGif");
-            var buttons = document.querySelectorAll('.button-container a');
+            var buttons = document.querySelectorAll('.Column, .Tube');
 
             // Set the current time to 0 to ensure the GIF starts from the beginning
             introGif.currentTime = 0;
@@ -64,11 +101,10 @@
                 setTimeout(function () {
                     introGif.src = "intro.gif";
 
-                    // Display the buttons
+                    // Display both buttons
                     buttons.forEach(function (button) {
                         button.style.display = 'block';
                     });
-
                 }, 1500);
 
                 document.body.style.backgroundColor = 'rgb(0, 255, 0)';
@@ -85,8 +121,8 @@
         <!-- Button container -->
         <div class="button-container">
             <!-- Buttons (hidden initially) -->
-            <a href="colonna.html">colonna</a>
-            <a href="tubo.html">tubo</a>
+            <a href="1.Column.html" class="Column">1. Column</a>
+            <a href="2.Tube.html" class="Tube">2. Tube</a>
         </div>
     </div>
 </body>
