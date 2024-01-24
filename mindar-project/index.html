@@ -86,7 +86,7 @@
         .fuoco,
         .ascensore,
         .quinto {
-            font-size: 50px; /* Set the desired font size */
+            font-size: 30px; /* Set the desired font size */
             animation: colonnaAnimation 2s infinite alternate ease-in-out; /* Adjust the duration and timing function as needed */
         }
 
@@ -96,28 +96,25 @@
 
         .tubo,
         .fuoco,
-        .ascensore,
-        .quinto {
+        .ascensore {
             font-family: 'ABCArizonaPlusVariable-Trial', sans-serif;
-            animation: tuboFuocoAscensoreQuintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the second, third, fourth, and fifth buttons */
+            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the second, third, and fourth buttons */
         }
 
         .fuoco,
-        .ascensore,
-        .quinto {
+        .ascensore {
             font-family: 'ABCAsfaltVariableVF-Trial', sans-serif;
-            animation: tuboFuocoAscensoreQuintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the third, fourth, and fifth buttons */
+            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the third and fourth buttons */
         }
 
-        .ascensore,
-        .quinto {
+        .ascensore {
             font-family: 'ABCMaxiPlusVariable-Trial', sans-serif;
-            animation: tuboFuocoAscensoreQuintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the fourth and fifth buttons */
+            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the fourth button */
         }
 
         .quinto {
             font-family: 'ABCGintoNordWidthsVariable-Trial', sans-serif;
-            animation: tuboFuocoAscensoreQuintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the fifth button */
+            animation: quintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the fifth button */
         }
 
         a {
@@ -144,12 +141,21 @@
             }
         }
 
-        @keyframes tuboFuocoAscensoreQuintoAnimation {
+        @keyframes tuboFuocoAscensoreAnimation {
             0% {
                 font-variation-settings: 'wdth' 50, 'wght' 200, 'slnt' -14, 'SRFF' 0, 'MONO' 0;
             }
             100% {
                 font-variation-settings: 'wdth' 150, 'wght' 700, 'slnt' 0, 'SRFF' 1, 'MONO' 1;
+            }
+        }
+
+        @keyframes quintoAnimation {
+            0% {
+                font-variation-settings: 'wdth' 75, 'wght' 100, 'slnt' -12;
+            }
+            100% {
+                font-variation-settings: 'wdth' 100, 'wght' 900, 'slnt' 0;
             }
         }
     </style>
