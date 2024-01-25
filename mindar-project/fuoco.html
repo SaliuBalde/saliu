@@ -5,32 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
         @font-face {
-            font-family: 'ABCGravityVariable-Trial';
-            src: url('ABCGravityVariable-Trial.woff2') format('woff2'),
-                 url('ABCGravityVariable-Trial.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'ABCArizonaPlusVariable-Trial';
-            src: url('ABCArizonaPlusVariable-Trial.woff2') format('woff2'),
-                 url('ABCArizonaPlusVariable-Trial.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'ABCAsfaltVariableVF-Trial';
-            src: url('ABCAsfaltVariableVF-Trial.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'ABCMaxiPlusVariable-Trial';
-            src: url('ABCMaxiPlusVariable-Trial.woff2') format('woff2'),
-                 url('ABCMaxiPlusVariable-Trial.woff') format('woff');
+            font-family: 'ABCMarist-Black-Trial';
+            src: url('ABCMarist-Black-Trial.woff2') format('woff2'),
+                 url('ABCMarist-Black-Trial.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
@@ -40,175 +17,48 @@
             padding: 0;
             overflow: hidden;
             background-color: rgb(0, 255, 0);
-            transition: background-color 1.5s ease-out;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
 
-        .content-container {
-            position: relative;
-            z-index: 1;
-        }
-
-        #introGif {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 1;
-            transition: opacity 1.5s ease-out;
-        }
-
-        .button-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 2; /* Set a higher z-index for the buttons */
-        }
-
-        .colonna,
-        .tubo,
-        .fuoco,
-        .ascensore {
-            font-size: 50px; /* Set the desired font size */
-            animation: colonnaAnimation 2s infinite alternate ease-in-out; /* Adjust the duration and timing function as needed */
-        }
-
-        .colonna {
-            font-family: 'ABCGravityVariable-Trial', sans-serif;
-        }
-
-        .tubo,
-        .fuoco,
-        .ascensore {
-            font-family: 'ABCArizonaPlusVariable-Trial', sans-serif;
-            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the second, third, and fourth buttons */
-        }
-
-        .fuoco,
-        .ascensore {
-            font-family: 'ABCAsfaltVariableVF-Trial', sans-serif;
-            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the third and fourth buttons */
-        }
-
-        .ascensore {
-            font-family: 'ABCMaxiPlusVariable-Trial', sans-serif;
-            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the fourth button */
-        }
-
         a {
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-            margin: 1px; /* Adjust the margin to make the buttons extremely close */
-            display: none; /* Initially hide the buttons */
+            position: fixed;
+            top: 20px;
+            left: 10px; /* Add a light margin on the left side */
+            z-index: 9999999999;
+            width: auto;
+            color: white;
             cursor: pointer;
+            font-family: 'ABCMarist-Black-Trial', sans-serif; /* Set the font for the button */
+            padding: 10px; /* Add padding for better visibility */
+            text-decoration: none; /* Remove underline */
+            background-color: transparent; /* Make the background transparent */
+            border: 2px solid white; /* Add a white border */
+            border-radius: 5px; /* Optional: Add border-radius for rounded corners */
         }
 
-        hr {
-            width: 100%; /* Extend the line to the right border of the page */
-            border: 1px solid black;
-            margin: 1px 0; /* Adjust the margin as needed */
-            opacity: 0;
-        }
-
-        @keyframes colonnaAnimation {
-            0% {
-                font-variation-settings: 'wdth' 150, 'slnt' -16;
-            }
-            100% {
-                font-variation-settings: 'wdth' 50, 'slnt' 0;
-            }
-        }
-
-        @keyframes tuboFuocoAscensoreAnimation {
-            0% {
-                font-variation-settings: 'wdth' 50, 'wght' 200, 'slnt' -14, 'SRFF' 0, 'MONO' 0;
-            }
-            100% {
-                font-variation-settings: 'wdth' 150, 'wght' 700, 'slnt' 0, 'SRFF' 1, 'MONO' 1;
-            }
+        a:hover {
+            background-color: white; /* Change the background color on hover */
+            color: black; /* Change the text color on hover */
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var introGif = document.getElementById("introGif");
-            var buttons = document.querySelectorAll('.button-container a');
-            var lines = document.querySelectorAll('.button-container hr');
-
-            // Set the current time to 0 to ensure the GIF starts from the beginning
-            introGif.currentTime = 0;
-
-            setTimeout(function () {
-                introGif.style.opacity = 0;
-
-                setTimeout(function () {
-                    introGif.src = "intro.gif";
-
-                    // Display the buttons and lines
-                    buttons.forEach(function (button, index) {
-                        button.style.display = 'block';
-                        lines[index].style.opacity = 1;
-                        // Add a click event listener to redirect to the specified URL
-                        button.addEventListener('click', function () {
-                            window.location.href = button.getAttribute('href');
-                        });
-                    });
-
-                }, 1500);
-
-                document.body.style.backgroundColor = 'rgb(0, 255, 0)';
-            }, 1000);
-
-            // Start the perpetual random background color change
-            setInterval(randomBackgroundColor, 5000); // Change color every 5 seconds
-
-            // Function to generate a random fluorescent color
-            function getRandomFluorescentColor() {
-                var hue = Math.floor(Math.random() * 360);
-                return 'hsl(' + hue + ', 100%, 50%)';
-            }
-
-            // Function to change the background color randomly and slowly
-            function randomBackgroundColor() {
-                var newColor = getRandomFluorescentColor();
-
-                // Transition the background color over 5 seconds
-                document.body.style.transition = 'background-color 5s ease';
-                document.body.style.backgroundColor = newColor;
-
-                // Reset the transition property after the transition ends
-                setTimeout(function () {
-                    document.body.style.transition = '';
-                }, 5000);
-            }
-        });
-    </script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+    <script src="shader.js"></script>
 </head>
 
 <body>
-    <div class="content-container">
-        <!-- Image element to display intro.gif -->
-        <img id="introGif" src="intro.gif" alt="Intro GIF">
 
-        <!-- Button container -->
-        <div class="button-container">
-            <!-- Buttons and lines (hidden initially) -->
-            <a href="colonna.html" class="colonna">[1] Gravity</a>
-            <hr>
-            <a href="tubo.html" class="tubo">[2] Arizona</a>
-            <hr>
-            <a href="fuoco.html" class="fuoco">[3] Fuoco</a>
-            <hr>
-            <a href="ascensore.html" class="ascensore">[4] Ascensore</a>
-        </div>
-    </div>
+    <a href="index.html">BACK</a>
+
+    <a-scene mindar-image="imageTargetSrc: ./targets2.mind;" vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <a-entity mindar-image-target="targetIndex: 0" position="0 2 -4" rotation="0 25 0" geometry="primitive:plane;height: 3.85, width: 2" material="shader:gif;src:url(1.gif);opacity:1"></a-entity>
+    </a-scene>
 </body>
 
 </html>

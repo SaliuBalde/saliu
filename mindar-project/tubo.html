@@ -3,26 +3,71 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        @font-face {
+            font-family: 'ABCMarist-Black-Trial';
+            src: url('ABCMarist-Black-Trial.woff2') format('woff2'),
+                 url('ABCMarist-Black-Trial.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(0, 255, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        a {
+            position: fixed;
+            top: 20px;
+            left: 10px; /* Same light margin on the left side */
+            z-index: 9999999999;
+            width: auto;
+            color: white; /* Same font color */
+            cursor: pointer;
+            font-family: 'ABCMarist-Black-Trial', sans-serif;
+            padding: 10px;
+            text-decoration: none;
+            background-color: transparent;
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: white;
+            color: black;
+        }
+    </style>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
     <script src="shader.js"></script>
 </head>
 
 <body>
-    <a href="index.html"
-        style="position: fixed; top:20px;left:0; z-index: 9999999999; width: auto; background-color: white;color: black; cursor: pointer;">BACK</a>
-    <!-- <a href="colonna.html">colonna</a>
-    <a href="index.html">index</a> -->
+    <a href="index.html">BACK</a>
 
     <a-scene mindar-image="imageTargetSrc: ./targets1.mind;" vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false">
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <a-entity mindar-image-target="targetIndex: 0" position="0 2 -4" rotation="0 25 0"
-            geometry="primitive:plane; width: 0.7, height: 9" material="shader:gif;src:url(2.gif);opacity:1"></a-entity>
+            geometry="primitive:plane; width: 0.7, height: 9"
+            material="shader:gif;src:url(2.gif);opacity:1"></a-entity>
     </a-scene>
 
-
+    <script>
+        // Add the same back button functionality as before
+        var backButton = document.querySelector('a[href="index.html"]');
+        backButton.addEventListener('click', function () {
+            window.location.href = backButton.getAttribute('href');
+        });
+    </script>
 </body>
 
 </html>
