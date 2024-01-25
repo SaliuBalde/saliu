@@ -43,6 +43,14 @@
             font-style: normal;
         }
 
+        @font-face {
+            font-family: 'ABCMarist-Black-Trial';
+            src: url('ABCMarist-Black-Trial.woff2') format('woff2'),
+                 url('ABCMarist-Black-Trial.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -85,13 +93,15 @@
         .tubo,
         .fuoco,
         .ascensore,
-        .quinto {
+        .quinto,
+        .about {
             font-size: 30px; /* Set the desired font size */
-            animation: colonnaAnimation 2s infinite alternate ease-in-out; /* Adjust the duration and timing function as needed */
+            transition: color 0.3s ease-out; /* Add a transition effect for color change */
         }
 
         .colonna {
             font-family: 'ABCGravityVariable-Trial', sans-serif;
+            animation: colonnaAnimation 2s infinite alternate ease-in-out; /* Add animation to the "Gravity" button */
         }
 
         .tubo,
@@ -102,19 +112,27 @@
         }
 
         .fuoco,
-        .ascensore {
+        .ascensore,
+        .quinto {
             font-family: 'ABCAsfaltVariableVF-Trial', sans-serif;
-            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the third and fourth buttons */
+            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the third, fourth, and fifth buttons */
         }
 
-        .ascensore {
+        .ascensore,
+        .quinto,
+        .about {
             font-family: 'ABCMaxiPlusVariable-Trial', sans-serif;
-            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the fourth button */
+            animation: tuboFuocoAscensoreAnimation 2s infinite alternate ease-in-out; /* Add animation to the fourth and fifth buttons */
         }
 
         .quinto {
             font-family: 'ABCGintoNordWidthsVariable-Trial', sans-serif;
-            animation: quintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the fifth button */
+            animation: quintoAnimation 2s infinite alternate ease-in-out; /* Add animation to the "Ginto" button */
+        }
+
+        .about {
+            font-family: 'ABCMarist-Black-Trial', sans-serif;
+            font-size: 20px; /* Set a smaller font size for the "About" button */
         }
 
         a {
@@ -129,6 +147,14 @@
             width: 100%; /* Extend the line to the right border of the page */
             border: 1px solid black;
             margin: 1px 0; /* Adjust the margin as needed */
+            opacity: 0;
+        }
+
+        .line-above,
+        .line-below {
+            width: 100%;
+            border: 1px solid black;
+            margin: 1px 0;
             opacity: 0;
         }
 
@@ -158,12 +184,22 @@
                 font-variation-settings: 'wdth' 100, 'wght' 900, 'slnt' 0;
             }
         }
+
+        /* Hover effect for buttons */
+        .colonna:hover,
+        .tubo:hover,
+        .fuoco:hover,
+        .ascensore:hover,
+        .quinto:hover,
+        .about:hover {
+            color: white; /* Change text color to white on hover */
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var introGif = document.getElementById("introGif");
-            var buttons = document.querySelectorAll('.button-container a');
-            var lines = document.querySelectorAll('.button-container hr');
+            var buttons = document.querySelectorAll('.button-container a, .line-above, .line-below');
+            var lines = document.querySelectorAll('.button-container hr, .line-above, .line-below');
 
             // Set the current time to 0 to ensure the GIF starts from the beginning
             introGif.currentTime = 0;
@@ -179,9 +215,11 @@
                         button.style.display = 'block';
                         lines[index].style.opacity = 1;
                         // Add a click event listener to redirect to the specified URL
-                        button.addEventListener('click', function () {
-                            window.location.href = button.getAttribute('href');
-                        });
+                        if (button.tagName === 'A') {
+                            button.addEventListener('click', function () {
+                                window.location.href = button.getAttribute('href');
+                            });
+                        }
                     });
 
                 }, 1500);
@@ -222,16 +260,28 @@
 
         <!-- Button container -->
         <div class="button-container">
+            <!-- Horizontal line above the first button -->
+            <div class="line-above"></div>
+
             <!-- Buttons and lines (hidden initially) -->
             <a href="colonna.html" class="colonna">[1] Gravity</a>
             <hr>
             <a href="tubo.html" class="tubo">[2] Arizona</a>
             <hr>
-            <a href="fuoco.html" class="fuoco">[3] Fuoco</a>
+            <a href="fuoco.html" class="fuoco">[3] Asphalt</a>
             <hr>
-            <a href="ascensore.html" class="ascensore">[4] Ascensore</a>
+            <a href="ascensore.html" class="ascensore">[4] Maxi</a>
             <hr>
-            <a href="quinto.html" class="quinto">[5] Quinto</a>
+            <a href="quinto.html" class="quinto">[5] Ginto</a>
+
+            <!-- Horizontal line above the "About" button (under the "Ginto" button) -->
+            <div class="line-above"></div>
+
+            <!-- "About" button -->
+            <a href="about.html" class="about">[About]</a>
+
+            <!-- Horizontal line below the last button -->
+            <div class="line-below"></div>
         </div>
     </div>
 </body>

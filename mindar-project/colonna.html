@@ -3,6 +3,47 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        @font-face {
+            font-family: 'ABCMarist-Black-Trial';
+            src: url('ABCMarist-Black-Trial.woff2') format('woff2'),
+                 url('ABCMarist-Black-Trial.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(0, 255, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        a {
+            position: fixed;
+            top: 20px;
+            left: 10px; /* Add a light margin on the left side */
+            z-index: 9999999999;
+            width: auto;
+            color: white;
+            cursor: pointer;
+            font-family: 'ABCMarist-Black-Trial', sans-serif; /* Set the font for the button */
+            padding: 10px; /* Add padding for better visibility */
+            text-decoration: none; /* Remove underline */
+            background-color: transparent; /* Make the background transparent */
+            border: 2px solid white; /* Add a white border */
+            border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+        }
+
+        a:hover {
+            background-color: white; /* Change the background color on hover */
+            color: black; /* Change the text color on hover */
+        }
+    </style>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
     <script src="shader.js"></script>
@@ -10,10 +51,7 @@
 
 <body>
 
-    <a href="index.html"
-        style="position: fixed; top:20px;left:0; z-index: 9999999999; width: auto; background-color: white;color: black; cursor: pointer;">BACK</a>
-
-
+    <a href="index.html">BACK</a>
 
     <a-scene mindar-image="imageTargetSrc: ./targets2.mind;" vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false">
@@ -22,4 +60,5 @@
         <a-entity mindar-image-target="targetIndex: 0" position="0 2 -4" rotation="0 25 0" geometry="primitive:plane;height: 3.85, width: 2" material="shader:gif;src:url(1.gif);opacity:1"></a-entity>
     </a-scene>
 </body>
+
 </html>
